@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Me</title>
+<style>
+    body {
+        background: linear-gradient(to bottom, #ffa2a5, #ff464d);
+    }
+    .form-base {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        margin: -3px;
+    }
+    .form-container {
+        background-color: #0000000a;
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        text-shadow: 0.5px 0px black;
+        width: 400px;
+    }
+    .form-container h2 {
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group input {
+        margin-top: 5px;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        width: 365px;
+        height: 40px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    label {
+        color: white;
+    }
+    .form-group .radio-label {
+        margin-left: 15px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .form-group .radio-label input {
+        margin-right: 10px;
+    }
+    .back {
+        text-align: right;
+        margin-top: 30px;
+    }
+    .submit-btn {
+        text-align: center;
+    }
+    .submit-btn button {
+        background-color: #000000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    .submit-btn-header button {
+        display: flex;
+        background-color: #ffffff;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    #price::-webkit-outer-spin-button,
+    #price::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .error {
+        color: black;
+        margin-bottom: 10px;
+    	margin-left: 20px;
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <form action="displayProduct" method="post">
+        <br>
+        <div class="submit-btn-header" style="text-align: right; display: flex; justify-content: end;">
+            <button type="submit">Back</button>
+        </div>
+    </form>
+    <hr style="margin-top:20px">
+    <div class="form-base">
+        <div class="form-container">
+            <h2>Register</h2>
+            <hr><br>
+            <form id="userForm" action="addUser" method="post">
+                <div class="form-group">
+                    <label for="userName">Name<span style="color: red; font-size: 15px;">*</span>:&nbsp;</label>
+                    <input type="text" id="userName" name="uname" placeholder="Username" required>
+                </div>
+                <div class="radio-label" style="margin-bottom: 10px;">
+                	<label for="userRole">Role<span style="color: red; font-size: 15px;">*</span>:&nbsp;</label>
+                   	<input type="radio" id="admin" name="role" value="admin" required>
+                   	<label for="admin">Admin</label>
+                   	<!-- <span class="radio-label">
+                   		<input type="radio" id="user" name="role" value="user" required>
+                   		<label for="user">User</label>
+                  	</span> -->
+                </div>
+                <div class="form-group">
+                    <label for="password">Password<span style="color: red; font-size: 15px;">*</span>:&nbsp;</label>
+                    <input type="password" id="pass" name="pass" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password<span style="color: red; font-size: 15px;">*</span>:&nbsp;</label>
+                    <input type="password" id="confirmPassword"  style="margin-bottom: 0px;" required>
+                    <div id="passwordError" class="error" >password did't match.</div>
+                </div>
+                <div class="submit-btn" style="margin-top: 15px;">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pass').addEventListener('change', validatePasswords);
+        document.getElementById('confirmPassword').addEventListener('change', validatePasswords);
+
+        function validatePasswords() {
+            var password = document.getElementById('pass').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = 'block'; // Show error message
+            } else {
+                passwordError.style.display = 'none'; // Hide error message
+            }
+        }
+
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            var password = document.getElementById('pass').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                event.preventDefault(); // Prevent form submission
+                passwordError.style.display = 'block'; // Show error message
+            }
+        });
+    </script>
+</body>
+</html>

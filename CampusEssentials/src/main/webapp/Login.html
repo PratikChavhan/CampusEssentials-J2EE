@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffcfcf;
+        }
+        .container {
+            display: flex;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 700px;
+            max-width: 100%;
+        }
+        .login-section, .info-section {
+            padding: 40px;
+            flex: 1;
+        }
+        .login-section {
+            background: white;
+        }
+        .info-section {
+            background: linear-gradient(to right, #ff464c, #ff416c);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .info-section p {
+        	font-size: 15px;
+        }
+        .login-section h2 {
+        	margin-top: 10px;
+            margin-bottom: 15px;
+            display: flex;
+    		justify-content: center;
+    		font-size: 40px;
+        }
+        .login-section input[type="text"], .login-section input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-section input[type="submit"], button  {
+            width: 40%;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            background: #ff4b2b;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 10%;
+        }
+        .login-section input[type="submit"]:hover, button:hover {
+        	color: black;
+            background: white;
+            box-shadow: 0 0 8px #00000080;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+            <h2>Login</h2>
+            <form action="validate" method="post">
+                <input type="text" name="uname" placeholder="Email" required>
+                <input type="password" name="pass" placeholder="Password" required>
+                <input type="submit" value="Log In">&nbsp;
+                <button style="margin-left: 0" onclick="location.href='register.html';">Register</button>
+            </form>
+            
+        </div>
+        <div class="info-section">
+            <h2>Source for Student Essentials</h2>
+            <p>Empower Your Studies with Every Page Turn. 
+            Discover Stationery that Inspires Achievement. 
+			Your Partner in Academic Excellence!!!</p>
+        </div>
+    </div>
+</body>
+</html>
